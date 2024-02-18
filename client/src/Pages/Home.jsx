@@ -5,7 +5,7 @@ import axios from "axios";
 import Loading from "../components/Loading";
 const Home = ({ type }) => {
   const [videos, setVideos] = useState([]);
-  const localAdd = "http://localhost:5000";
+  const localAdd = "https://uthub-backend.onrender.com" ;
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(`${localAdd}/api/videos/${type}`, {

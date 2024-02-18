@@ -9,7 +9,7 @@ const Comments = ({ videoId }) => {
   const [commentInput, setCommentInput] = useState("");
 
   const { currentUser } = useSelector((state) => state.user);
-  const localAdd = "http://localhost:5000";
+  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const FetchComments = async () => {
       try {

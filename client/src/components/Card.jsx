@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { format } from "timeago.js";
 const Card = ({ type, video }) => {
   const [channel, setChannel] = useState({});
-  const localAdd = "http://localhost:5000";
+  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const fetchChannel = async () => {
       const res = await axios.get(`${localAdd}/api/users/find/${video.userId}`);

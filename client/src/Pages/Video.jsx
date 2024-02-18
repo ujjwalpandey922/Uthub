@@ -23,7 +23,7 @@ const Video = () => {
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user);
   const { currentVideo } = useSelector((state) => state.video);
-   const localAdd = "http://localhost:5000"; 
+   const localAdd = "https://uthub-backend.onrender.com"; 
   //if we use useState liking and disliking wont happen in the same click so we make a slice
   // const [videoc, setVideoc] = useState({});
   useEffect(() => {

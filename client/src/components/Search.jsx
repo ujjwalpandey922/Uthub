@@ -9,7 +9,7 @@ import Card from "../components/Card";
 const Search = () => {
   const [videos, setVideos] = useState([]);
   const query = useLocation().search;
-  const localAdd = "http://localhost:5000";
+  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(`${localAdd}/api/videos/search${query}`);

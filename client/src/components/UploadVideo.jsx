@@ -17,7 +17,7 @@ const UploadVideo = ({ setOpen }) => {
   const [videoPerc, setVideoPerc] = useState(0);
   const [inputs, setInputs] = useState({});
   const [tags, setTags] = useState([]);
-  const localAdd = "http://localhost:5000"; 
+  const localAdd = "https://uthub-backend.onrender.com"; 
   const navigate = useNavigate();
 
   const handleChange = (e) => {

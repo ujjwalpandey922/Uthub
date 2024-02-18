@@ -39,7 +39,7 @@ const Text = styled.span`
 
 const Comment = ({ comment }) => {
   const [channel, setChannel] = useState({});
-  const localAdd = "http://localhost:5000";
+  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const FetchComment = async () => {
       try {

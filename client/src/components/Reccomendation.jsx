@@ -11,7 +11,7 @@ const Container = styled.div`
 const Recommendation = ({ tags }) => {
   const [videos, setVideos] = useState([]);
   const { id } = useParams();
-  const localAdd = "http://localhost:5000";
+  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(`${localAdd}/api/videos/tags?tags=${tags}`);
