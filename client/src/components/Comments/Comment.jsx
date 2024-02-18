@@ -39,12 +39,12 @@ const Text = styled.span`
 
 const Comment = ({ comment }) => {
   const [channel, setChannel] = useState({});
-
+  const localAdd = "http://localhost:5000";
   useEffect(() => {
     const FetchComment = async () => {
       try {
         const channelRes = await axios.get(
-          `/api/users/find/${comment.userId}`
+          `${localAdd}/api/users/find/${comment.userId}`
         );
         setChannel(channelRes.data);
       } catch (error) {}
@@ -56,8 +56,7 @@ const Comment = ({ comment }) => {
       <Avatar src={channel.img} />
       <Details>
         <Name>
-          {channel?.username}{" "}
-          <Date> {format(comment?.createdAt)}</Date>
+          {channel?.username} <Date> {format(comment?.createdAt)}</Date>
         </Name>
         <Text>{comment.desc}</Text>
       </Details>

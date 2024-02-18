@@ -23,17 +23,17 @@ const Video = () => {
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user);
   const { currentVideo } = useSelector((state) => state.video);
-  // const localAdd = "http://localhost:5000"; 
+   const localAdd = "http://localhost:5000"; 
   //if we use useState liking and disliking wont happen in the same click so we make a slice
   // const [videoc, setVideoc] = useState({});
   useEffect(() => {
     const fetchData = async () => {
       try {
         const videoRes = await axios.put(
-          `/api/videos/find/${id}`
+          `${localAdd}/api/videos/find/${id}`
         );
         const channelRes = await axios.get(
-          `/api/users/find/${videoRes.data.userId}`
+          `${localAdd}/api/users/find/${videoRes.data.userId}`
         );
         // setVideoc(videoRes.data);
         // console.log(channelRes, videoRes);
@@ -47,7 +47,7 @@ const Video = () => {
   }, [id, dispatch]);
 
   const handleLike = async () => {
-    await fetch(`/api/users/like/${currentVideo._id}`, {
+    await fetch(`${localAdd}/api/users/like/${currentVideo._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const Video = () => {
     dispatch(Like(currentUser._id));
   };
   const handleDisLike = async () => {
-    await fetch(`/api/users/dislike/${currentVideo._id}`, {
+    await fetch(`${localAdd}/api/users/dislike/${currentVideo._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const Video = () => {
     dispatch(DisLike(currentUser._id));
   };
   const handleSub = async () => {
-    await fetch(`/api/users/sub/${channel._id}`, {
+    await fetch(`${localAdd}/api/users/sub/${channel._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const Video = () => {
     dispatch(subscription(channel._id));
   };
   const handleUnSub = async () => {
-    await fetch(`/api/users/unsub/${channel._id}`, {
+    await fetch(`${localAdd}/api/users/unsub/${channel._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -156,6 +156,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   gap: 3rem;
+  padding:1rem;
 `;
 const Content = styled.div`
   flex: 5;

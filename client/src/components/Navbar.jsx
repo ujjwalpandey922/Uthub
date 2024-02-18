@@ -26,8 +26,8 @@ const Navbar = ({ toggleSideBar, setToggleSideBar }) => {
           <Logo>
             <RxHamburgerMenu
               style={{
-                fontSize: "1.5rem",
-                marginRight: ".5rem",
+                fontSize: "2rem",
+                marginRight: "1.5rem",
                 cursor: "pointer",
               }}
               onClick={() => setToggleSideBar(!toggleSideBar)}
@@ -42,9 +42,9 @@ const Navbar = ({ toggleSideBar, setToggleSideBar }) => {
                 color: "inherit",
               }}
             >
-              <AiFillYoutube style={{ color: "red", fontSize: "1.5rem" }} />
+              <AiFillYoutube style={{ color: "red", fontSize: "2.5rem" }} />
 
-              <span> Uthub </span>
+              <h3 style={{ fontSize: "1.5rem" }}> UTHUB </h3>
             </Link>
           </Logo>
           <Search>
@@ -55,7 +55,7 @@ const Navbar = ({ toggleSideBar, setToggleSideBar }) => {
             <AiOutlineSearch
               style={{
                 margin: " 0 1rem",
-                fontSize: "1.5rem",
+                fontSize: "2.5rem",
                 cursor: "pointer",
               }}
               onClick={() => nav(`/search?q=${q}`)}
@@ -66,7 +66,7 @@ const Navbar = ({ toggleSideBar, setToggleSideBar }) => {
               <AiFillVideoCamera
                 style={{
                   margin: " 0 1rem",
-                  fontSize: "1.5rem",
+                  fontSize: "2.5rem",
                   cursor: "pointer",
                 }}
                 onClick={() => setOpen(true)}
@@ -81,8 +81,6 @@ const Navbar = ({ toggleSideBar, setToggleSideBar }) => {
               to="/signin"
               style={{
                 textDecoration: "none",
-
-                color: "inherit",
               }}
             >
               <Button>
@@ -106,6 +104,8 @@ const Container = styled.div`
   top: 0;
   z-index: 100;
   background-color: ${({ theme }) => theme.bg};
+
+  max-height: 3rem;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -130,7 +130,8 @@ const Input = styled.input`
   border-bottom-left-radius: 50px;
   padding-left: 1rem;
   border: none;
-
+  color: ${({ theme }) => theme.text};
+  background-color: transparent;
   outline: none;
   height: 30px;
   width: 100%;
@@ -142,9 +143,9 @@ const Button = styled.button`
   gap: 0.25rem;
   border: 1px solid #10b3cd;
   color: #10b3cd;
-  margin: 0.5rem;
+  margin: 0.5rem 0;
   cursor: pointer;
-
+  background-color: ${({ theme }) => theme.bg};
   :hover {
     color: #333;
     background-color: #10b3cd;
@@ -170,7 +171,6 @@ const UserInfo = styled.div`
   :hover {
     background: ${({ theme }) => theme.text};
     color: ${({ theme }) => theme.bg};
-   
   }
 `;
 

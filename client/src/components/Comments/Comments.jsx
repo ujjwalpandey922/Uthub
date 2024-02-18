@@ -9,13 +9,11 @@ const Comments = ({ videoId }) => {
   const [commentInput, setCommentInput] = useState("");
 
   const { currentUser } = useSelector((state) => state.user);
-
+  const localAdd = "http://localhost:5000";
   useEffect(() => {
     const FetchComments = async () => {
       try {
-        const res = await axios.get(
-          `/api/comments/${videoId}`
-        );
+        const res = await axios.get(`${localAdd}/api/comments/${videoId}`);
         setComments(res.data);
       } catch (error) {}
     };
@@ -30,7 +28,6 @@ const Comments = ({ videoId }) => {
           onChange={(e) => setCommentInput(e.target.value)}
         />
         <FocusInput>
-      
           {/* <div>SmiLE</div>
           <div>
             <button>Cancle</button>
@@ -74,7 +71,7 @@ const Input = styled.input`
   padding: 5px;
   width: 100%;
   ${FocusInput} {
-    background-color: red ;
+    background-color: red;
   }
   :focus {
     border-bottom: 2px solid black;

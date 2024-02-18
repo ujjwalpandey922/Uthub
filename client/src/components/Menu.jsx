@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { AiFillYoutube, AiFillSetting } from "react-icons/ai";
 import { FaHome, FaHistory, FaMusic, FaGamepad } from "react-icons/fa";
@@ -27,16 +27,22 @@ const Menu = ({
     setToggleSideBar(!toggleSideBar);
   };
   const { currentUser } = useSelector((state) => state.user);
+  const menu = useRef(null);
+  const container = useRef(null);
+  const handleMain = (e) => {
+    if (e.target === menu.current) setToggleSideBar(!toggleSideBar);
+  };
+
   return (
     <>
       {toggleSideBar && (
-        <Main>
+        <Main ref={menu} onClick={handleMain}>
           <Container className="slide-in-left">
             <Logo>
               <RxHamburgerMenu
                 style={{
-                  fontSize: "1.5rem",
-                  marginRight: ".5rem",
+                  fontSize: "2rem",
+                  marginRight: "1.5rem",
                   cursor: "pointer",
                 }}
                 onClick={handleClick}
@@ -51,15 +57,27 @@ const Menu = ({
                   color: "inherit",
                 }}
               >
-                <AiFillYoutube style={{ color: "red", fontSize: "1.5rem" }} />
-                <span> Uthub </span>
+                <AiFillYoutube style={{ color: "red", fontSize: "2.5rem" }} />
+
+                <h3 style={{ fontSize: "1.5rem" }}> UTHUB </h3>
               </Link>
             </Logo>
             <Wrapper>
+              <Link
+                to="/"
+                style={{
+                  textDecoration: "none",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "inherit",
+                }}
+              />
               <Icons>
                 <FaHome />
-                <span>Home</span>
+                Home
               </Icons>
+              <Link />
               <Icons>
                 <MdExplore />
                 Explore
@@ -207,9 +225,9 @@ const Icons = styled.div`
   justify-content: start;
   gap: 1rem;
   cursor: pointer;
-
+  font-size: 1.5rem;
   padding: 1rem 0.5rem;
-  &:hover {
+  :hover {
     background-color: #80808044;
     border-radius: 10px;
   }

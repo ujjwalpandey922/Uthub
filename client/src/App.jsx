@@ -33,7 +33,7 @@ function App() {
               setToggleSideBar={setToggleSideBar}
             />
             <Wrapper>
-              <MiniMenu />
+              <MiniMenu toggleMode={toggleMode} setToggleMode={setToggleMode} />
               <Routes>
                 <Route>
                   {/* usually but dont do it */}
@@ -45,7 +45,7 @@ function App() {
                     <Route path="signin" element={<SignIn />} />
                     <Route path="search" element={<Search />} />
                     <Route path="video">
-                    <Route path=":id" element={<Video />} />
+                      <Route path=":id" element={<Video />} />
                     </Route>
                   </Route>
                 </Route>
@@ -65,11 +65,13 @@ export default App;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 `;
 const Main = styled.div`
   flex: 7;
-  background-color: ${({ theme }) => theme.bg};
+   background-color: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text};
+ 
 `;
 const Wrapper = styled.div`
   display: flex;

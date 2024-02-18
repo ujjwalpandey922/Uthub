@@ -17,6 +17,7 @@ const UploadVideo = ({ setOpen }) => {
   const [videoPerc, setVideoPerc] = useState(0);
   const [inputs, setInputs] = useState({});
   const [tags, setTags] = useState([]);
+  const localAdd = "http://localhost:5000"; 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -76,7 +77,7 @@ const UploadVideo = ({ setOpen }) => {
   const handleUpload = async (e) => {
     e.preventDefault();
     const res = await axios.post(
-      "/api/videos",
+      `${localAdd}/api/videos`,
       {
         ...inputs,
         tags,

@@ -64,12 +64,12 @@ app.use((err, req, res, next) => {
 // deployment Code on Cyclic.........
 // Import path and __dirname !important
 
-app.use(Express.static(path.join(__dirname, "./client/dist")));
-app.get("*", function (_, res) {
-  res.sendFile(
-    path.join(__dirname, "./client/dist/index.html"),
-    function (err) {
-      res.status(500).send(err);
-    }
-  );
-});
+// app.use(Express.static(path.join(__dirname, "./client/dist")));
+// app.get("*", function (_, res) {
+//   res.sendFile(
+//     path.join(__dirname, "./client/dist/index.html"),
+//     function (err) {
+//       res.status(500).send(err);
+//     }
+//   );
+// });

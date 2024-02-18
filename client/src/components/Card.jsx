@@ -5,11 +5,10 @@ import styled from "styled-components";
 import { format } from "timeago.js";
 const Card = ({ type, video }) => {
   const [channel, setChannel] = useState({});
+  const localAdd = "http://localhost:5000";
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(
-        `/api/users/find/${video.userId}`
-      );
+      const res = await axios.get(`${localAdd}/api/users/find/${video.userId}`);
       setChannel(res.data);
     };
     fetchChannel();
@@ -40,17 +39,20 @@ const Card = ({ type, video }) => {
 export default Card;
 
 const Container = styled.div`
-  width: ${({ type }) => (type === "Recommendation" ? "100%" : "270px")};
+  width: ${({ type }) => (type === "Recommendation" ? "100%" : "300px")};
   margin-bottom: ${({ type }) => type === "Recommendation" && "1rem"};
   cursor: pointer;
   display: ${({ type }) => type === "Recommendation" && "flex"};
 `;
 
 const Image = styled.img`
-  width: ${({ type }) => (type === "Recommendation" ? "150px" : "100%")};
-  height: ${({ type }) => (type === "Recommendation" ? "100px" : "150px")};
+  width: ${({ type }) => (type === "Recommendation" ? "200px" : "100%")};
+  height: ${({ type }) => (type === "Recommendation" ? "120px" : "200px")};
   background-color: grey;
-  border-radius: 10px;
+  border-radius: 15px;
+  :hover {
+    border-radius: 0px;
+  }
   flex: 1;
   object-fit: cover;
 `;
@@ -70,8 +72,8 @@ const Details = styled.div`
   flex: 1;
 `;
 const Title = styled.h1`
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 800;
   color: ${({ theme }) => theme.text};
 `;
 

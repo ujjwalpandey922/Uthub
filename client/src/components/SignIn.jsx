@@ -19,7 +19,7 @@ const SignIn = () => {
     dispatch(LogInStar());
     try {
       const res = await axios.post(
-        "/api/auth/login",
+        `${localAdd}/api/auth/login`,
         {
           username,
           password,
@@ -40,7 +40,7 @@ const SignIn = () => {
   const handleSignUp = async () => {
     try {
       const res = await axios.post(
-        "/api/auth/signup",
+        `${localAdd}/api/auth/signup`,
         {
           username,
           password,

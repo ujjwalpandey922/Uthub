@@ -11,12 +11,10 @@ const Container = styled.div`
 const Recommendation = ({ tags }) => {
   const [videos, setVideos] = useState([]);
   const { id } = useParams();
-
+  const localAdd = "http://localhost:5000";
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(
-        `/api/videos/tags?tags=${tags}`
-      );
+      const res = await axios.get(`${localAdd}/api/videos/tags?tags=${tags}`);
 
       setVideos(res.data.filter((e) => e._id != id));
     };
