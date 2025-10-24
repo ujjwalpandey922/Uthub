@@ -3,17 +3,17 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Comment from "./Comment";
+import { API_BASE_URL } from "../../config/api";
 
 const Comments = ({ videoId }) => {
   const [comments, setComments] = useState([]);
   const [commentInput, setCommentInput] = useState("");
 
   const { currentUser } = useSelector((state) => state.user);
-  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const FetchComments = async () => {
       try {
-        const res = await axios.get(`${localAdd}/api/comments/${videoId}`);
+        const res = await axios.get(`${API_BASE_URL}/api/comments/${videoId}`);
         setComments(res.data);
       } catch (error) {}
     };

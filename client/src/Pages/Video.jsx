@@ -16,24 +16,24 @@ import { FetchSuccess, Like, DisLike } from "../../Redux/VideoSlice";
 import { format } from "timeago.js";
 import { subscription } from "../../Redux/UserSlice";
 import Recommendation from "../components/Reccomendation";
+import { API_BASE_URL } from "../config/api";
 
 const Video = () => {
   const [channel, setChannel] = useState({});
   const dispatch = useDispatch();
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user);
-  const { currentVideo } = useSelector((state) => state.video);
-   const localAdd = "https://uthub-backend.onrender.com"; 
+  const { currentVideo } = useSelector((state) => state.video); 
   //if we use useState liking and disliking wont happen in the same click so we make a slice
   // const [videoc, setVideoc] = useState({});
   useEffect(() => {
     const fetchData = async () => {
       try {
         const videoRes = await axios.put(
-          `${localAdd}/api/videos/find/${id}`
+          `${API_BASE_URL}/api/videos/find/${id}`
         );
         const channelRes = await axios.get(
-          `${localAdd}/api/users/find/${videoRes.data.userId}`
+          `${API_BASE_URL}/api/users/find/${videoRes.data.userId}`
         );
         // setVideoc(videoRes.data);
         // console.log(channelRes, videoRes);
@@ -47,7 +47,7 @@ const Video = () => {
   }, [id, dispatch]);
 
   const handleLike = async () => {
-    await fetch(`${localAdd}/api/users/like/${currentVideo._id}`, {
+    await fetch(`${API_BASE_URL}/api/users/like/${currentVideo._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const Video = () => {
     dispatch(Like(currentUser._id));
   };
   const handleDisLike = async () => {
-    await fetch(`${localAdd}/api/users/dislike/${currentVideo._id}`, {
+    await fetch(`${API_BASE_URL}/api/users/dislike/${currentVideo._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const Video = () => {
     dispatch(DisLike(currentUser._id));
   };
   const handleSub = async () => {
-    await fetch(`${localAdd}/api/users/sub/${channel._id}`, {
+    await fetch(`${API_BASE_URL}/api/users/sub/${channel._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const Video = () => {
     dispatch(subscription(channel._id));
   };
   const handleUnSub = async () => {
-    await fetch(`${localAdd}/api/users/unsub/${channel._id}`, {
+    await fetch(`${API_BASE_URL}/api/users/unsub/${channel._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

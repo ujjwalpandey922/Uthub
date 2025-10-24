@@ -4,10 +4,11 @@ import Card from "../components/Card";
 import axios from "axios";
 import Loading from "../components/Loading";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
+
 const Home = ({ type }) => {
   const [videos, setVideos] = useState([]);
   const history = useNavigate();
-  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const fetchVideos = async () => {
       const token = localStorage.getItem("token");
@@ -17,7 +18,7 @@ const Home = ({ type }) => {
         return;
       }
       try {
-        const res = await axios.get(`${localAdd}/api/videos/${type}`, {
+        const res = await axios.get(`${API_BASE_URL}/api/videos/${type}`, {
           headers: {
             access_token: token,
           },

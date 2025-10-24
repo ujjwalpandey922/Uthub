@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { format } from "timeago.js";
+import { API_BASE_URL } from "../config/api";
+
 const Card = ({ type, video }) => {
   const [channel, setChannel] = useState({});
-  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(`${localAdd}/api/users/find/${video.userId}`);
+      const res = await axios.get(`${API_BASE_URL}/api/users/find/${video.userId}`);
       setChannel(res.data);
     };
     fetchChannel();

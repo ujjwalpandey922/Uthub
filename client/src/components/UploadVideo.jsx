@@ -9,6 +9,7 @@ import {
 import app from "../utls/Firebase";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 
 const UploadVideo = ({ setOpen }) => {
   const [img, setImg] = useState(null);
@@ -16,8 +17,7 @@ const UploadVideo = ({ setOpen }) => {
   const [imgPerc, setImgPerc] = useState(0);
   const [videoPerc, setVideoPerc] = useState(0);
   const [inputs, setInputs] = useState({});
-  const [tags, setTags] = useState([]);
-  const localAdd = "https://uthub-backend.onrender.com"; 
+  const [tags, setTags] = useState([]); 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -77,7 +77,7 @@ const UploadVideo = ({ setOpen }) => {
   const handleUpload = async (e) => {
     e.preventDefault();
     const res = await axios.post(
-      `${localAdd}/api/videos`,
+      `${API_BASE_URL}/api/videos`,
       {
         ...inputs,
         tags,

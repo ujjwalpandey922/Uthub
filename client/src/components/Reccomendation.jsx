@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Card from "./Card";
+import { API_BASE_URL } from "../config/api";
 
 const Container = styled.div`
   flex: 2;
@@ -11,10 +12,9 @@ const Container = styled.div`
 const Recommendation = ({ tags }) => {
   const [videos, setVideos] = useState([]);
   const { id } = useParams();
-  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`${localAdd}/api/videos/tags?tags=${tags}`);
+      const res = await axios.get(`${API_BASE_URL}/api/videos/tags?tags=${tags}`);
 
       setVideos(res.data.filter((e) => e._id != id));
     };

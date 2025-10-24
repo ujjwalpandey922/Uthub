@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { format } from "timeago.js";
+import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const Container = styled.div`
   display: flex;
@@ -39,12 +41,11 @@ const Text = styled.span`
 
 const Comment = ({ comment }) => {
   const [channel, setChannel] = useState({});
-  const localAdd = "https://uthub-backend.onrender.com";
   useEffect(() => {
     const FetchComment = async () => {
       try {
         const channelRes = await axios.get(
-          `${localAdd}/api/users/find/${comment.userId}`
+          `${API_BASE_URL}/api/users/find/${comment.userId}`
         );
         setChannel(channelRes.data);
       } catch (error) {}
