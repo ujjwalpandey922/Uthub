@@ -24,9 +24,10 @@ const Connect = () => {
     });
 };
 // listen helps start the server any Port
-app.listen(5000, () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => {
   Connect();
-  console.log("euuuuuuuu");
+  console.log(`Server running on port ${PORT}`);
 });
 
 //allow application to use json from outer source
